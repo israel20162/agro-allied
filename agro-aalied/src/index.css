@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-white text-leaf-900 font-sans antialiased;
+  }
+  :focus-visible {
+    @apply outline-none ring-2 ring-leaf-500 ring-offset-2;
+  }
+}
+
+@layer components {
+  /* Shared building blocks. Change them here once and the whole site follows. */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-3
+           text-sm font-semibold transition disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn bg-leaf-600 text-white hover:bg-leaf-700;
+  }
+  .btn-outline {
+    @apply btn border-2 border-leaf-600 text-leaf-700 hover:bg-leaf-50;
+  }
+  .btn-ready {
+    @apply btn bg-leaf-600 text-white hover:bg-leaf-700;
+  }
+  .btn-almost {
+    @apply btn bg-red-600 text-white hover:bg-red-700;
+  }
+  .card {
+    @apply rounded-2xl border border-leaf-100 bg-white;
+  }
+  .input {
+    @apply w-full rounded-xl border border-leaf-200 bg-white px-4 py-3 text-base
+           placeholder:text-leaf-300 focus:border-leaf-500 focus:outline-none;
+  }
+  .label {
+    @apply mb-1 block text-sm font-semibold text-leaf-800;
+  }
+  .error {
+    @apply mt-1 text-sm text-red-600;
+  }
+  .badge {
+    @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold;
+  }
+}
