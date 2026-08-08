@@ -15,13 +15,13 @@ export const BUSINESS = {
 export const PAYMENT_ACCOUNTS = [
   {
     bank: 'OPay',
-    accountName: 'Ameer Farms & Agro Allied Enterprises',
-    accountNumber: '0000000000',
+    accountName: 'Azeezat  Adesola Tawio-Raji',
+    accountNumber: '8058077502',
   },
   {
     bank: 'Moniepoint',
-    accountName: 'Ameer Farms & Agro Allied Enterprises',
-    accountNumber: '0000000000',
+    accountName: 'Ismaila Raji',
+    accountNumber: '5481990843',
   },
 ]
 
