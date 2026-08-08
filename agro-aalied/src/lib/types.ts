@@ -9,6 +9,12 @@ export type Product = {
   created_at?: string
 }
 
+export type Config = {
+  key: string
+  value: string
+  type: 'string' | 'number' | 'boolean'
+}
+
 export type OrderStatus = 'pending' | 'paid' | 'almost_ready' | 'ready' | 'completed'
 
 export type Order = {

@@ -4,7 +4,7 @@
 
 export const BUSINESS = {
   name: 'Ameer Farms & Agro Allied Enterprises',
-  shortName: 'Ameer Farms',
+  shortName: 'Ameer Farms Foods',
   address: 'Shop 18, Jaja Shopping Complex, University of Lagos (UNILAG)',
   domain: 'ameerfarmsunilag.com',
   // Support line, international format, digits only.

@@ -7,6 +7,7 @@ import { useCart } from "../context/CartContext";
 import { BUSINESS, PAYMENT_ACCOUNTS } from "../lib/config";
 import { formatNaira, generateOrderNumber, uploadFile } from "../lib/helpers";
 import { supabase } from "../lib/supabase";
+import { useOpen } from "../context/OpenContext";
 
 const schema = Yup.object({
   customer_name: Yup.string()
@@ -24,6 +25,7 @@ export default function Checkout() {
   const navigate = useNavigate();
   const [receipt, setReceipt] = useState<File | null>(null);
   const [failure, setFailure] = useState("");
+  const { isOpen } = useOpen();
 
   if (items.length === 0) {
     return (
@@ -206,7 +208,7 @@ export default function Checkout() {
 
             <button
               type="submit"
-              disabled={isSubmitting}
+              disabled={isSubmitting || !isOpen}
               className="btn-primary w-full"
             >
               {isSubmitting ? "Placing order…" : "Place order"}

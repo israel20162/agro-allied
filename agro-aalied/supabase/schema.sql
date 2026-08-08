@@ -43,6 +43,12 @@ create table if not exists order_items (
   quantity      integer not null default 1
 );
 
+create table if not exists configs (
+  key   text primary key,
+  value  text not null,
+  type  text not null default 'string' check (type in ('string','number','boolean'))
+);
+
 create index if not exists orders_phone_idx      on orders (phone);
 create index if not exists orders_created_at_idx on orders (created_at desc);
 create index if not exists order_items_order_idx on order_items (order_id);
@@ -54,7 +60,6 @@ create index if not exists order_items_order_idx on order_items (order_id);
 -- ---------------------------------------------------------------------------
 
 alter table products    enable row level security;
-alter table orders      enable row level security;
 alter table order_items enable row level security;
 
 -- Products: anyone can read, only signed-in staff can change.
@@ -63,6 +68,11 @@ create policy "anyone reads products"
 
 create policy "staff manage products"
   on products for all
+  using (auth.role() = 'authenticated')
+  with check (auth.role() = 'authenticated');
+
+create policy "staff manages configs"
+  on configs for all
   using (auth.role() = 'authenticated')
   with check (auth.role() = 'authenticated');
 
@@ -164,3 +174,11 @@ insert into products (name, price, unit, category) values
   ('Chicken',             4500, 'kg',     'Protein'),
   ('Turkey',              6000, 'kg',     'Protein')
 on conflict do nothing;
+
+insert into configs (key, value) values
+  ('company_name', 'Ameer Farms & Agro Allied Enterprises'),
+  ('company_address', 'Shop 18, Jaja Shopping Complex, University of Lagos (UNILAG)'),
+  ('company_phone', '2348058077502'),
+  ('company_email', 'ameerfarm16@gmail.com'),
+  ("open", 'true', "boolean")
+on conflict do nothing

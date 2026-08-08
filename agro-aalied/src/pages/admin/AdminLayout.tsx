@@ -1,14 +1,15 @@
-import { ReactNode } from 'react'
-import { Link, NavLink, useNavigate } from 'react-router-dom'
-import { supabase } from '../../lib/supabase'
+import { ReactNode } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { supabase } from "../../lib/supabase";
 
 const tabs = [
-  { to: '/admin', label: 'Orders', end: true },
-  { to: '/admin/products', label: 'Products' },
-]
+  { to: "/admin", label: "Orders", end: true },
+  { to: "/admin/products", label: "Products" },
+  { to: "/admin/settings", label: "Settings" },
+];
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <div className="min-h-screen bg-leaf-50">
@@ -25,7 +26,9 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
                 end={tab.end}
                 className={({ isActive }) =>
                   `rounded-full px-3 py-1.5 text-sm font-medium ${
-                    isActive ? 'bg-leaf-600 text-white' : 'text-leaf-600 hover:bg-leaf-50'
+                    isActive
+                      ? "bg-leaf-600 text-white"
+                      : "text-leaf-600 hover:bg-leaf-50"
                   }`
                 }
               >
@@ -36,8 +39,8 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
           <button
             type="button"
             onClick={async () => {
-              await supabase.auth.signOut()
-              navigate('/admin/login')
+              await supabase.auth.signOut();
+              navigate("/admin/login");
             }}
             className="ml-auto text-sm font-semibold text-leaf-600 underline"
           >
@@ -48,5 +51,5 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
 
       <main className="mx-auto max-w-6xl px-4 py-6">{children}</main>
     </div>
-  )
+  );
 }
