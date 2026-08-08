@@ -8,7 +8,7 @@ export const BUSINESS = {
   address: 'Shop 18, Jaja Shopping Complex, University of Lagos (UNILAG)',
   domain: 'ameerfarmsunilag.com',
   // Support line, international format, digits only.
-  whatsapp: '2348000000000',
+  whatsapp: '2348058077502',
   pickupMinutes: 15,
 }
 
